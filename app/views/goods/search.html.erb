@@ -1,0 +1,14 @@
+<h2>商品を検索</h2>
+<form class="form-inline">
+    <%= form_tag('/', method: :get) do %>
+        <div class="form-group mx-sm-3 mb-2">
+            <%= text_field_tag :good, "",  class: "form-control", name: "keyword", placeholder: "キーワードを入力" %>
+        </div>
+        <button title="検索" type="submit" class="btn btn-primary mb-2">検索</button>
+    <% end %>
+</form>
+<h2><%= link_to  '保存済み商品', items_path %></h2>
+<h2>検索結果</h2>
+<div id='good_list'>
+  <%= render partial: 'good_list' %>
+</div>

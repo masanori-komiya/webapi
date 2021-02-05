@@ -1,0 +1,22 @@
+<h2><%= link_to  '戻る', root_path %></h2>
+<div class="table-responsive">
+    
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>価格</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% if @items.present? %>
+            <% @items.each do |item| %>
+              <tr>
+                <td><a href="<%= item.url %>" target="_blank"><%= item.name %></a></td>
+                <td><%= item.price %>円</td>
+              </tr>
+            <% end %>
+        <% end %>
+        </tbody>
+    </table>
+</div>

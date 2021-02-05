@@ -1,0 +1,31 @@
+<div class="table-responsive">
+    <table class = "table">
+    <thead>
+        <tr>
+            <th>画像</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>ボタン</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% if @items.present? %>
+        <% @items.each do |item| %>
+          <tr>
+            <td><img src="<%= item['smallImageUrls'][0] %>"></td>
+            <td><a href="<%= item['itemUrl'] %>" target="_blank"><%= item['itemName'] %></a></td>
+            <td><%= "#{item['itemPrice']}円" %></td>
+            <td>
+               <%= form_tag({ :controller => 'goods', :action => 'create' }, { :method => :post}) do %>
+　　             <%= hidden_field_tag :url, item['itemUrl'] %>
+　　             <%= hidden_field_tag :name, item['itemName'] %>
+　　             <%= hidden_field_tag :price, item['itemPrice'] %>
+　　             <%= submit_tag '保存', class:'btn btn-primary' %>
+               <% end %>
+            </td>
+          </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
